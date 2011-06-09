@@ -1418,7 +1418,7 @@ void MainWindow::addPropertyToDescriptor()
 
 
 void MainWindow::createNCL()
-{  
+{
     QString path = NULL;
     QString pathAux;
     path = QFileDialog::getSaveFileName(this,tr("Crear NCL"),myFileName,tr("*.ncl"));
@@ -1428,10 +1428,12 @@ void MainWindow::createNCL()
         pathAux.remove(pathAux.lastIndexOf('/')+1,pathAux.count());
 
         QFile connector(QDir::currentPath()+"/connector/causalConnBase.ncl");
-
+        QFile dir(pathAux+"causalConnBase.ncl");
         if(!connector.copy(pathAux+"causalConnBase.ncl")){
-            QMessageBox::StandardButton reply;
-            reply = QMessageBox::warning(this, tr("Precaucion!"),"Error al copiar causalConnBase.ncl",QMessageBox::Ok);
+            if(!dir.exists()){
+                QMessageBox::StandardButton reply;
+                reply = QMessageBox::warning(this, tr("Precaucion!"),"Error al copiar causalConnBase.ncl",QMessageBox::Ok);
+            }
         }
 
         addPropertyToDescriptor();
