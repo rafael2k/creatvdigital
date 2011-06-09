@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1175</width>
+    <height>931</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="dockNestingEnabled">
+   <bool>false</bool>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QHBoxLayout" name="horizontalLayout_2"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <property name="movable">
+    <bool>false</bool>
+   </property>
+   <property name="floatable">
+    <bool>false</bool>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionNuevo"/>
+   <addaction name="actionAbrir"/>
+   <addaction name="actionGuardar"/>
+   <addaction name="separator"/>
+   <addaction name="actionGenerar_Archivo_NCL"/>
+   <addaction name="actionEjecutar_Archivo_NCL"/>
+   <addaction name="separator"/>
+   <addaction name="actionPALN"/>
+   <addaction name="actionPALAncho"/>
+   <addaction name="actionHDTV720"/>
+   <addaction name="actionHDTV1080"/>
+   <addaction name="separator"/>
+   <addaction name="actionRegionPALN"/>
+   <addaction name="actionRegionPALAncho"/>
+   <addaction name="actionRegionHDTV720p"/>
+   <addaction name="actionRegionHDTV1080i"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QDockWidget" name="dockWidget_2">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+     <horstretch>0</horstretch>
+     <verstretch>200</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="windowTitle">
+    <string>Area Crear Regiones</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>4</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_3">
+    <layout class="QHBoxLayout" name="horizontalLayout"/>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1175</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuArchivo">
+    <property name="title">
+     <string>Archivo</string>
+    </property>
+    <addaction name="actionNuevo"/>
+    <addaction name="actionAbrir"/>
+    <addaction name="actionGuardar"/>
+    <addaction name="actionGuardar_Como"/>
+    <addaction name="separator"/>
+    <addaction name="actionSalir"/>
+   </widget>
+   <widget class="QMenu" name="menuNCL">
+    <property name="title">
+     <string>NCL</string>
+    </property>
+    <addaction name="actionGenerar_Archivo_NCL"/>
+    <addaction name="actionEjecutar_Archivo_NCL"/>
+   </widget>
+   <widget class="QMenu" name="menuItem">
+    <property name="title">
+     <string>Item</string>
+    </property>
+    <addaction name="actionEliminar"/>
+   </widget>
+   <widget class="QMenu" name="menuHerramientas">
+    <property name="title">
+     <string>Herramientas</string>
+    </property>
+    <addaction name="actionNavegacion_de_Teclas"/>
+    <addaction name="separator"/>
+    <addaction name="actionEditar_descripcion_del_proyecto"/>
+   </widget>
+   <widget class="QMenu" name="menuVer">
+    <property name="title">
+     <string>Ver</string>
+    </property>
+    <addaction name="actionPALN"/>
+    <addaction name="actionPALAncho"/>
+    <addaction name="actionHDTV720"/>
+    <addaction name="actionHDTV1080"/>
+    <addaction name="separator"/>
+    <addaction name="actionRegionPALN"/>
+    <addaction name="actionRegionPALAncho"/>
+    <addaction name="actionRegionHDTV720p"/>
+    <addaction name="actionRegionHDTV1080i"/>
+    <addaction name="separator"/>
+   </widget>
+   <widget class="QMenu" name="menuAyuda">
+    <property name="title">
+     <string>Ayuda</string>
+    </property>
+    <addaction name="actionAcerca_de"/>
+   </widget>
+   <addaction name="menuArchivo"/>
+   <addaction name="menuVer"/>
+   <addaction name="menuNCL"/>
+   <addaction name="menuItem"/>
+   <addaction name="menuHerramientas"/>
+   <addaction name="menuAyuda"/>
+  </widget>
+  <action name="actionNuevo">
+   <property name="text">
+    <string>Nuevo</string>
+   </property>
+  </action>
+  <action name="actionSalir">
+   <property name="icon">
+    <iconset>
+     <normaloff>../EditorNCL-build-desktop/icons/exit.png</normaloff>../EditorNCL-build-desktop/icons/exit.png</iconset>
+   </property>
+   <property name="text">
+    <string>Salir</string>
+   </property>
+  </action>
+  <action name="actionGenerar_Archivo_NCL">
+   <property name="text">
+    <string>Generar Archivo NCL</string>
+   </property>
+  </action>
+  <action name="actionNewRegion">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Nueva Region</string>
+   </property>
+  </action>
+  <action name="actionEliminar">
+   <property name="text">
+    <string>&amp;Eliminar</string>
+   </property>
+  </action>
+  <action name="actionGuardar">
+   <property name="text">
+    <string>Guardar</string>
+   </property>
+  </action>
+  <action name="actionGuardar_Como">
+   <property name="text">
+    <string>Guardar Como...</string>
+   </property>
+  </action>
+  <action name="actionAbrir">
+   <property name="text">
+    <string>Abrir</string>
+   </property>
+  </action>
+  <action name="actionNavegacion_de_Teclas">
+   <property name="text">
+    <string>Navegacion del Control</string>
+   </property>
+  </action>
+  <action name="actionFoco_de_Navegacion">
+   <property name="text">
+    <string>Foco de Navegacion</string>
+   </property>
+  </action>
+  <action name="actionPALN">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Marca de pantalla PALN</string>
+   </property>
+  </action>
+  <action name="actionPALAncho">
+   <property name="text">
+    <string>Marca de pantalla PAL Ancho</string>
+   </property>
+  </action>
+  <action name="actionHDTV720">
+   <property name="text">
+    <string>Marca de pantalla HDTV 720p</string>
+   </property>
+  </action>
+  <action name="actionHDTV1080">
+   <property name="text">
+    <string>Marca de pantalla HDTV 1080i</string>
+   </property>
+  </action>
+  <action name="actionRegionPALN">
+   <property name="text">
+    <string>Relación Región/PALN</string>
+   </property>
+  </action>
+  <action name="actionRegionPALAncho">
+   <property name="text">
+    <string>Ralción Región/PALAncho</string>
+   </property>
+  </action>
+  <action name="actionRegionHDTV720p">
+   <property name="text">
+    <string>Ralcion Región/HDTV 720p</string>
+   </property>
+  </action>
+  <action name="actionRegionHDTV1080i">
+   <property name="text">
+    <string>Relación Región/HDTV 1080i</string>
+   </property>
+  </action>
+  <action name="actionAcerca_de">
+   <property name="text">
+    <string>Acerca de..</string>
+   </property>
+  </action>
+  <action name="actionEjecutar_Archivo_NCL">
+   <property name="text">
+    <string>Ejecutar Archivo NCL</string>
+   </property>
+  </action>
+  <action name="actionEditar_descripcion_del_proyecto">
+   <property name="text">
+    <string>Editar descripcion del proyecto</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+ <slots>
+  <slot>fileChoserVideo()</slot>
+  <slot>fileChoserAudio()</slot>
+  <slot>fileChoserImage()</slot>
+  <slot>fileChoserText()</slot>
+ </slots>
+</ui>
