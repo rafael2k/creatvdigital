@@ -3807,73 +3807,81 @@ void MainWindow::changeVerticalBar2(int cant)
  */
 bool MainWindow::idExist(QString idP)
 {
-    bool existe = false;
+    bool exist = false;
     int pagina;
+    QMessageBox::StandardButton reply;
 
     if(tabRegions->currentIndex()==1){
         pagina = importMediasToolBox->currentIndex();
     }else{
         pagina = importOtherToolBox->currentIndex();
-    }
+    }   
 
-    for (int i = 0; i < usedMediasList->rowCount();i++){
-        if(pagina==0 && tabRegions->currentIndex()==1){
-            if(mediaVideoList.size() > 0  && i < mediaVideoList.size()){
-                if (mediaVideoList.at(i)->getId() == idP ){
-                    existe = true;
-                    QMessageBox::StandardButton reply;
-                    reply = QMessageBox::information(this, tr("Apodo en uso"), "El identificador del media ya existe!");
-                    break;
-                }
-            }
-        }else if (pagina==1 && tabRegions->currentIndex()==1 ){
-            if(mediaAudioList.size() > 0  && i < mediaAudioList.size()){
-                if (mediaAudioList.at(i)->getId() == idP ){
-                    existe = true;
-                    QMessageBox::StandardButton reply;
-                    reply = QMessageBox::information(this, tr("Apodo en uso"), "El identificador del media ya existe!");
-                    break;
-                }
-            }
-        }else if (pagina==2){
-            if(mediaImageList.size() > 0  && i < mediaImageList.size()){
-                if (mediaImageList.at(i)->getId() == idP ){
-                    existe = true;
-                    QMessageBox::StandardButton reply;
-                    reply = QMessageBox::information(this, tr("Apodo en uso"), "El identificador del media ya existe!");
-                    break;
-                }
-            }
-        }else if (pagina==3){
-            if(mediaTextList.size() > 0  && i < mediaTextList.size()){
-                if (mediaTextList.at(i)->getId() == idP ){
-                    existe = true;
-                    QMessageBox::StandardButton reply;
-                    reply = QMessageBox::information(this, tr("Apodo en uso"), "El identificador del media ya existe!");
-                    break;
-                }
-            }
-        }else if (pagina==0){
-            if(mediaLuaList.size() > 0 && i < mediaLuaList.size()){
-                if (mediaLuaList.at(i)->getId() == idP ){
-                    existe = true;
-                    QMessageBox::StandardButton reply;
-                    reply = QMessageBox::information(this, tr("Apodo en uso"), "El identificador del media ya existe!");
-                    break;
-                }
-            }
-        }else if (pagina==1){
-            if(mediaUriList.size() > 0 && i < mediaUriList.size()){
-                if (mediaUriList.at(i)->getId() == idP ){
-                    existe = true;
-                    QMessageBox::StandardButton reply;
-                    reply = QMessageBox::information(this, tr("Apodo en uso"), "El identificador del media ya existe!");
-                    break;
-                }
+
+    for(int i = 0; i < usedMediasList->rowCount();i++){
+        for(int j = 0; j < mediaVideoList.count();j++){
+            if (mediaVideoList.at(j)->getId() == idP ){
+                exist = true;
+                reply = QMessageBox::information(this, tr("Identificador en uso"), "El identificador del media ya existe!");
+                break;
             }
         }
+
+        if(exist) break;
+
+        for(int j = 0; j < mediaAudioList.count();j++){
+            if (mediaAudioList.at(j)->getId() == idP ){
+                exist = true;
+                reply = QMessageBox::information(this, tr("Identificador en uso"), "El identificador del media ya existe!");
+                break;
+            }
+        }
+
+        if(exist) break;
+
+        for(int j = 0; j < mediaImageList.count();j++){
+            if (mediaImageList.at(j)->getId() == idP ){
+                exist = true;
+                reply = QMessageBox::information(this, tr("Identificador en uso"), "El identificador del media ya existe!");
+                break;
+            }
+        }
+
+        if(exist) break;
+
+        for(int j = 0; j < mediaTextList.count();j++){
+            if (mediaTextList.at(j)->getId() == idP ){
+                exist = true;
+                reply = QMessageBox::information(this, tr("Identificador en uso"), "El identificador del media ya existe!");
+                break;
+            }
+        }
+
+        if(exist) break;
+
+        for(int j = 0; j < mediaLuaList.count();j++){
+            if (mediaLuaList.at(j)->getId() == idP ){
+                exist = true;
+                reply = QMessageBox::information(this, tr("Identificador en uso"), "El identificador del media ya existe!");
+                break;
+            }
+        }
+
+        if(exist) break;
+
+        for(int j = 0; j < mediaUriList.count();j++){
+            if (mediaUriList.at(j)->getId() == idP ){
+                exist = true;
+                reply = QMessageBox::information(this, tr("Identificador en uso"), "El identificador del media ya existe!");
+                break;
+            }
+        }
+
+        if(exist) break;
+
     }
-    return existe;
+
+    return exist;
 }
 
 
