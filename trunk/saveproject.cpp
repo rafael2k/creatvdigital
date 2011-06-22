@@ -744,14 +744,14 @@ void SaveProject::openImports(QTableWidget &videoList, QList<QDir*> &importVideo
     QTableWidgetItem *item;
     QListWidgetItem *itemList;
 
-    videoList.clear();
+    /*videoList.clear();
     importVideoList.clear();
     audioList.clear();
     importAudioList.clear();
     imageList.clear();
     importImageList.clear();
     textList.clear();
-    importTextList.clear();
+    importTextList.clear();*/
 
     while(!xmlReader.atEnd()){
         xmlReader.readNext();
@@ -1149,7 +1149,7 @@ void SaveProject::openDescriptiors(QList<Descriptor*> &descriptorList)
     QString transOut;
     QString descriptorParam;
 
-    descriptorList.clear();
+    //descriptorList.clear();
     while(!xmlReader.atEnd()){
         xmlReader.readNext();
         if(xmlReader.isStartElement()){
