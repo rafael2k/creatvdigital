@@ -213,13 +213,9 @@ void NclDocument::MakeRegionBase(GraphicsScene *graphicsScene)
     Regionn *region;
 
     if (lista.count()!=0){
-        cout << "aqui0.1"<< endl;
         for(int i = 0; i < lista.count();i++){
-            cout << "aqui0"<< endl;
             if(lista.at(i)->type() == 5){ //item is rectangulo
-                cout << "aqui"<< endl;
                 rectItem =  qgraphicsitem_cast<GraphicsRectItem *>(lista.at(i));
-                cout << "aqui2"<< endl;
                 if(rectItem->parentItem() == 0){
                     region = new Regionn(rectItem->getName());
                     region->setWidth(rectItem->getWidthRecNCL());
@@ -237,9 +233,7 @@ void NclDocument::MakeRegionBase(GraphicsScene *graphicsScene)
                     if (regionNumber == 1){
                         regionBase = new RegionBase(*region);                       
                     }else{
-                        cout << "aqu3"<< endl;
                         regionBase->addRegion(*region);
-                        cout << "aqu4"<< endl;
                     }
                 }
             }

@@ -1460,9 +1460,7 @@ void MainWindow::createNCL()
 
         addPropertyToDescriptor();
         NclDocument *nclDocument = new NclDocument();
-        cout<<"here" << endl;
         nclDocument->createNCL(graphicsScene,graphicsSceneHead,graphicsSceneTemporal,path,mediaVideoList,mediaAudioList,mediaImageList,mediaTextList,mediaLuaList,mediaUriList,descriptorList);
-        cout<<"here2" << endl;
     }
 }
 
