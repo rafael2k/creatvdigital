@@ -610,6 +610,7 @@ void MainWindow::setXValue(int x)
             value = (x*screenSizeX)/100;
             graphicsScene->getSelected()->setXNCL(QString::number(x)+"%");
             graphicsScene->getSelected()->setPosistionXY((qreal)value,y);
+
         }else{
             rectItem =  qgraphicsitem_cast<GraphicsRectItem *>(graphicsScene->getSelected()->parentItem());
             value = (x*rectItem->getWidthRec())/100;
@@ -1270,8 +1271,8 @@ void MainWindow::newProject(QString description,QString selected,int w,int h, QD
 
         if (msgBox.exec() == QMessageBox::AcceptRole)
             save();
-
     }
+    clearAll();
     NewProject p(description,selected,w, h,date,this);
     if(p.exec() == QDialog::Accepted){
         createProject(p.getNameProject(),p.getDescription(),p.getDate(),p.getScreenSelected(),p.getWidth(),p.getHeight());
@@ -3257,7 +3258,7 @@ void MainWindow::addRegion()
 QString MainWindow::getMediaName(QString dir)
 {
     bool ok;
-    QString text = QInputDialog::getText(this, tr("Apodo"), tr("Ingrese el apodo del media"), QLineEdit::Normal, dir, &ok);
+    QString text = QInputDialog::getText(this, tr("Apodo"), tr("Ingrese el identificar del media"), QLineEdit::Normal, dir, &ok);
     QString name = NULL;
     if (ok && !text.isEmpty())
         name = text;
@@ -3821,7 +3822,7 @@ bool MainWindow::idExist(QString idP)
                 if (mediaVideoList.at(i)->getId() == idP ){
                     existe = true;
                     QMessageBox::StandardButton reply;
-                    reply = QMessageBox::information(this, tr("Apodo en uso"), "El apodo del media ya existe!");
+                    reply = QMessageBox::information(this, tr("Apodo en uso"), "El identificador del media ya existe!");
                     break;
                 }
             }
@@ -3830,7 +3831,7 @@ bool MainWindow::idExist(QString idP)
                 if (mediaAudioList.at(i)->getId() == idP ){
                     existe = true;
                     QMessageBox::StandardButton reply;
-                    reply = QMessageBox::information(this, tr("Apodo en uso"), "El apodo del media ya existe!");
+                    reply = QMessageBox::information(this, tr("Apodo en uso"), "El identificador del media ya existe!");
                     break;
                 }
             }
@@ -3839,7 +3840,7 @@ bool MainWindow::idExist(QString idP)
                 if (mediaImageList.at(i)->getId() == idP ){
                     existe = true;
                     QMessageBox::StandardButton reply;
-                    reply = QMessageBox::information(this, tr("Apodo en uso"), "El apodo del media ya existe!");
+                    reply = QMessageBox::information(this, tr("Apodo en uso"), "El identificador del media ya existe!");
                     break;
                 }
             }
@@ -3848,7 +3849,7 @@ bool MainWindow::idExist(QString idP)
                 if (mediaTextList.at(i)->getId() == idP ){
                     existe = true;
                     QMessageBox::StandardButton reply;
-                    reply = QMessageBox::information(this, tr("Apodo en uso"), "El apodo del media ya existe!");
+                    reply = QMessageBox::information(this, tr("Apodo en uso"), "El identificador del media ya existe!");
                     break;
                 }
             }
@@ -3857,7 +3858,7 @@ bool MainWindow::idExist(QString idP)
                 if (mediaLuaList.at(i)->getId() == idP ){
                     existe = true;
                     QMessageBox::StandardButton reply;
-                    reply = QMessageBox::information(this, tr("Apodo en uso"), "El apodo del media ya existe!");
+                    reply = QMessageBox::information(this, tr("Apodo en uso"), "El identificador del media ya existe!");
                     break;
                 }
             }
@@ -3866,7 +3867,7 @@ bool MainWindow::idExist(QString idP)
                 if (mediaUriList.at(i)->getId() == idP ){
                     existe = true;
                     QMessageBox::StandardButton reply;
-                    reply = QMessageBox::information(this, tr("Apodo en uso"), "El apodo del media ya existe!");
+                    reply = QMessageBox::information(this, tr("Apodo en uso"), "El identificador del media ya existe!");
                     break;
                 }
             }
@@ -4791,6 +4792,14 @@ void MainWindow::clearAll()
     mediaLuaList.clear();
     mediaUriList.clear();
 
+    importVideoList.clear();
+    importAudioList.clear();
+    importImageList.clear();
+    importTextList.clear();
+    importLuaList.clear();
+    importUriList.clear();
+
+
     for(int i = videoList->rowCount();i>=0;i--){
         videoList->removeRow(i);
     }
@@ -4812,6 +4821,10 @@ void MainWindow::clearAll()
     }
 
     treeWidget->clear();
+
+    descriptorList.clear();
+
+    regionNumber = 0;
 }
 
 
@@ -4987,10 +5000,10 @@ void MainWindow::closeEvent(QCloseEvent *event)
 
 void MainWindow::setDataNcl()
 {
-    /*setXValue(spinX->value());
+    setXValue(spinX->value());
     setYValue(spinY->value());
     setWValue(spinW->value());
-    setHValue(spinH->value());*/
+    setHValue(spinH->value());
 }
 
 
