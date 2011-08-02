@@ -75,7 +75,8 @@ SOURCES += main.cpp \
     GUI/uriconfig.cpp \
     GUI/modifysize.cpp \
     saveproject.cpp \
-    GUI/editprojectdescription.cpp
+    GUI/editprojectdescription.cpp \
+    GUI/about.cpp
 HEADERS += mainwindow.h \
     graphicsrectitem.h \
     graphicsscene.h \
@@ -144,7 +145,8 @@ HEADERS += mainwindow.h \
     GUI/uriconfig.h \
     GUI/modifysize.h \
     saveproject.h \
-    GUI/editprojectdescription.h
+    GUI/editprojectdescription.h \
+    GUI/about.h
 FORMS += mainwindow.ui \
     GUI/newproject.ui \
     GUI/selectrole.ui \
@@ -158,4 +160,5 @@ FORMS += mainwindow.ui \
     GUI/selectkeygui.ui \
     GUI/uriconfig.ui \
     GUI/modifysize.ui \
-    GUI/editprojectdescription.ui
+    GUI/editprojectdescription.ui \
+    GUI/about.ui

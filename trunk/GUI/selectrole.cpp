@@ -47,6 +47,7 @@ SelectRole::SelectRole(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    this->setWindowTitle("Acciones");
     QButtonGroup *group = new QButtonGroup(this);
     group->addButton(ui->startCheckBox);
     group->addButton(ui->stopCheckBox);

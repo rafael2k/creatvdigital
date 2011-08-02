@@ -48,6 +48,7 @@ NewProject::NewProject(QString description, QString selected, int w, int h,QDate
 {
     m_ui->setupUi(this);
 
+    setWindowTitle("Nuevo Proyecto");
     QButtonGroup *group = new QButtonGroup();
     group->addButton(m_ui->palN);
     group->addButton(m_ui->palAncho);

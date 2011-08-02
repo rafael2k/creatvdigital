@@ -104,6 +104,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->actionNuevo, SIGNAL(triggered()), this, SLOT(newProject()));
     connect(ui->actionEjecutar_Archivo_NCL, SIGNAL(triggered()), this, SLOT(runNcl()));
     connect(ui->actionEditar_descripcion_del_proyecto, SIGNAL(triggered()), this, SLOT(editProjectDescription()));
+    connect(ui->actionAcerca_de, SIGNAL(triggered()), this, SLOT(aboutCreaTV()));
     connect(ui->actionSalir, SIGNAL(triggered()), this, SLOT(close()));
     connect(this, SIGNAL(destroyed()), this, SLOT(editProjectDescription()));
     connect(this, SIGNAL(setButtonPressed(bool)),graphicsScene,SLOT(setButtonPressed(bool)));
@@ -1265,7 +1266,7 @@ void MainWindow::newProject(QString description,QString selected,int w,int h, QD
 {
     if(changePresent){
         QMessageBox msgBox(QMessageBox::Warning, tr("Cambios Realizados"),
-                           "¿Decea guardar cambios realizados?", 0, this);
+                           "Decea guardar cambios realizados?", 0, this);
         msgBox.addButton(tr("Si"), QMessageBox::AcceptRole);
         msgBox.addButton(tr("No"), QMessageBox::RejectRole);
 
@@ -1277,6 +1278,18 @@ void MainWindow::newProject(QString description,QString selected,int w,int h, QD
     if(p.exec() == QDialog::Accepted){
         createProject(p.getNameProject(),p.getDescription(),p.getDate(),p.getScreenSelected(),p.getWidth(),p.getHeight());
     }
+}
+
+
+/*!
+ *\brief called to show the about Window
+ *\return void
+ */
+void MainWindow::aboutCreaTV()
+{
+    About ab(this);
+    ab.exec();
+
 }
 
 
@@ -3258,7 +3271,7 @@ void MainWindow::addRegion()
 QString MainWindow::getMediaName(QString dir)
 {
     bool ok;
-    QString text = QInputDialog::getText(this, tr("Apodo"), tr("Ingrese el identificar del media"), QLineEdit::Normal, dir, &ok);
+    QString text = QInputDialog::getText(this, tr("Id"), tr("Ingrese el identificador del media"), QLineEdit::Normal, dir, &ok);
     QString name = NULL;
     if (ok && !text.isEmpty())
         name = text;
