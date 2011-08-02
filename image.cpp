@@ -144,7 +144,7 @@ void Image::makeMenu()
     QAction *sinTiempo = new QAction("Sin fin de tiempo",menuTimeLineNoInfinit);
     menuTimeLineNoInfinit->addAction(sinTiempo);
 
-    QAction *addProperties = new QAction("propiedades",menuTimeLineNoInfinit);
+    QAction *addProperties = new QAction("Acciones...",menuTimeLineNoInfinit);
     menuTimeLineNoInfinit->addAction(addProperties);
 
     connect(sinTiempo,SIGNAL(triggered()),this,SLOT(suspensionPoints()));

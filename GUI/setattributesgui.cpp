@@ -46,6 +46,7 @@ SetAttributesGUI::SetAttributesGUI(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    this->setWindowTitle("Seteo de atributos");
     mediasList = new QTableWidget();
     mediasList->setColumnCount(2);
 

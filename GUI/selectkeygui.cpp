@@ -43,6 +43,7 @@ SelectKeyGUI::SelectKeyGUI(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    this->setWindowTitle("Control Remoto");
     QSize *iconSize = new QSize(30,30);
 
     ui->a->setIconSize(*iconSize);

@@ -43,6 +43,7 @@ ModifySize::ModifySize(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    this->setWindowTitle("Formato de pantalla");
     ui->width->setMaximum(2500);
     ui->height->setMaximum(2000);
 }

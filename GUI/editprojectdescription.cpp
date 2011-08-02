@@ -42,6 +42,7 @@ EditProjectDescription::EditProjectDescription(QString projectName,QString proje
 {
     ui->setupUi(this);
 
+    this->setWindowTitle("Descripción del Proyecto");
     ui->lineEdit->setText(projectName);
     ui->description->setText(projectDescription);
     ui->dateEdit->setDate(projectDate);

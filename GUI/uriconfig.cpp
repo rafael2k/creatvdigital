@@ -43,6 +43,7 @@ UriConfig::UriConfig(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    this->setWindowTitle("Uri");
     QButtonGroup *group = new QButtonGroup();
     group->addButton(ui->videoRB);
     group->addButton(ui->audioRB);

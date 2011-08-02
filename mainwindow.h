@@ -69,6 +69,7 @@
 #include "GUI/modifysize.h"
 #include "saveproject.h"
 #include "GUI/editprojectdescription.h"
+#include "GUI/about.h"
 
 #include <QList>
 
@@ -154,6 +155,9 @@ public slots:
     void outElement();
     /// called to show a warning message whe a bad element is dropped in a RectItem
     void outElementRegion();
+
+    /// called to show the about Window
+    void aboutCreaTV();
 
 signals:
     /// this signal is emitted when we select create a new region
