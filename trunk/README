@@ -1,4 +1,4 @@
-El sistema fue creado y testeado bajo el sistema operativo Ubuntu 10.04 y Ubuntu 10.10
+Testeado su funcionamiento en los Sistemas Operativos Ubuntu y Kubuntu
 
 Para un completo uso del programa "CreaTV Digital" es necesario instalar ginga en su maquina.
 En caso de que no desee instalar Ginga puede ejecutar el codigo ncl generado por "CreaTV Digital" 
