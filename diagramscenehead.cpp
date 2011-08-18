@@ -120,13 +120,15 @@ void DiagramSceneHead::removeLineBetween(int fromLineNumber,int toLineNumber)
                 if(fromLineNumber <= lineAux && lineAux < toLineNumber)
                     removeItem(TodosItems.at(i));
                 else if(toLineNumber <= lineAux)
-                    TodosItems.at(i)->setY((lineAux-cantLineRemove)*LINESIZE);
+                    //TodosItems.at(i)->setY((lineAux-cantLineRemove)*LINESIZE);
+                    TodosItems.at(i)->setPos(TodosItems.at(i)->x(),(lineAux-cantLineRemove)*LINESIZE);
             }else if(TodosItems.at(i)->type() == 8){//is text
                 lineAux = TodosItems.at(i)->y() / LINESIZE;                
                 if(fromLineNumber <= lineAux && lineAux < toLineNumber)
                     removeItem(TodosItems.at(i));
                 else if(toLineNumber <= lineAux)
-                    TodosItems.at(i)->setY((lineAux-cantLineRemove)*LINESIZE + borrarPos);
+                    //TodosItems.at(i)->setY((lineAux-cantLineRemove)*LINESIZE + borrarPos);
+                    TodosItems.at(i)->setPos(TodosItems.at(i)->x(),(lineAux-cantLineRemove)*LINESIZE + borrarPos);
             }
         }
     }
@@ -149,11 +151,13 @@ void DiagramSceneHead::downFromLineNumber(int lineNumber)
             if(TodosItems.at(i)->type() == 7){//is imagen
                 lineAux = (TodosItems.at(i)->y()+20) / LINESIZE;                
                 if(lineNumber <= lineAux)
-                    TodosItems.at(i)->setY((lineAux+1)*LINESIZE);
+                    //TodosItems.at(i)->setY((lineAux+1)*LINESIZE);
+                    TodosItems.at(i)->setPos(TodosItems.at(i)->x(),(lineAux+1)*LINESIZE);
             }else if(TodosItems.at(i)->type() == 8){//is text
                 lineAux = TodosItems.at(i)->y() / LINESIZE;                
                 if(lineNumber <= lineAux)
-                    TodosItems.at(i)->setY((lineAux+1)*LINESIZE + borrarPos);
+                    //TodosItems.at(i)->setY((lineAux+1)*LINESIZE + borrarPos);
+                    TodosItems.at(i)->setPos(TodosItems.at(i)->x(),(lineAux+1)*LINESIZE + borrarPos);
             }
         }
     }

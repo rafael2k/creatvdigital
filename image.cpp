@@ -1452,3 +1452,13 @@ QList<DescriptorParam*> Image::getDescriptorParamList(){
 void Image::clearDescriptorParamList(){
     desccriptorParamList.clear();
 }
+
+void Image::setX(qreal x)
+{
+    setPos(x,y());
+}
+
+void Image::setY(qreal y)
+{
+    setPos(x(),y);
+}

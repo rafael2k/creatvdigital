@@ -705,12 +705,14 @@ void DiagramScene::downFromLineNumber(int cantLineDown,qreal linePosX,Arrow *arr
                     if(TodosItems.at(i)->parentItem()->type()!= 3){
                         lineNumberCorriente =TodosItems.at(i)->y() / LINESIZE;
                         if(lineNumberCorriente >= newLineNumber)
-                            TodosItems.at(i)->setY(TodosItems.at(i)->y()+(cantLineDown*LINESIZE));
+                            //TodosItems.at(i)->setY(TodosItems.at(i)->y()+(cantLineDown*LINESIZE));
+                            TodosItems.at(i)->setPos(TodosItems.at(i)->x(),TodosItems.at(i)->y()+(cantLineDown*LINESIZE));
                     }
                  }else{
                      lineNumberCorriente =TodosItems.at(i)->y() / LINESIZE;
                      if(lineNumberCorriente >= newLineNumber)
-                         TodosItems.at(i)->setY(TodosItems.at(i)->y()+(cantLineDown*LINESIZE));
+                         //TodosItems.at(i)->setY(TodosItems.at(i)->y()+(cantLineDown*LINESIZE));
+                         TodosItems.at(i)->setPos(TodosItems.at(i)->x(),TodosItems.at(i)->y()+(cantLineDown*LINESIZE));
                  }
              }
         }

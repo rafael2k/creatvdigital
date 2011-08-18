@@ -74,6 +74,7 @@
 #include <QList>
 
 
+
 /*!
 * \class MainWindow
 * \brief class to manipulates activities in main window.
