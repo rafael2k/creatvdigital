@@ -122,6 +122,8 @@ public:
     void setPosistionXY(qreal x,qreal y);
     /// eliminates one media \a row the list of medias
     void removeMedia(int row);    
+    void setX(qreal x);
+    void setY(qreal y);
 
 signals:    
     /// this signal is emitted when a rectangle is selected

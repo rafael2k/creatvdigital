@@ -957,7 +957,7 @@ void MainWindow::fileChoserVideo()
                reply = QMessageBox::information(this, tr("Cargar Archivo"), "El archivo \""+name+"\" ya ha sido importado con anterioridad");
            }else{
                importVideoList.append(path);
-               QString cmd = "ffmpeg -i "+videoPath+" -ss 3.001 -t 3.001 -y images/"+videoName;
+               QString cmd = "ffmpeg -i "+videoPath.toUtf8()+" -ss 3.001 -t 3.001 -y images/"+videoName;
                int numError = system(cmd.toAscii());
                if (numError!=256){
                    QMessageBox::StandardButton reply;
@@ -4027,19 +4027,33 @@ void MainWindow::updateMediaTime()
 {
     if(importMediasToolBox->currentIndex()==0){
         if( 0 <= filePos && filePos <= videoFiles.size()-1){
-            Phonon::MediaObject* metaInformationResolver = new Phonon::MediaObject(this);
-            Phonon::MediaSource source(videoFiles.at(filePos));
-            metaInformationResolver->setCurrentSource(source);
 
+            QUrl url = QUrl::fromLocalFile("file://"+videoFiles.at(filePos));
+            Phonon::MediaObject* metaInformationResolver = new Phonon::MediaObject(this);
+            Phonon::MediaSource source(url);
+            metaInformationResolver->setCurrentSource(source);
             connect(metaInformationResolver,SIGNAL(totalTimeChanged(qint64)),this,SLOT(editTime(qint64)));
+
+
+            Phonon::MediaObject* metaInformationResolver2 = new Phonon::MediaObject(this);
+            Phonon::MediaSource source2(QUrl::fromLocalFile(videoFiles.at(filePos)));
+            metaInformationResolver2->setCurrentSource(source2);
+            connect(metaInformationResolver2,SIGNAL(totalTimeChanged(qint64)),this,SLOT(editTime(qint64)));
+
         }
     }else if (importMediasToolBox->currentIndex()==1){
         if( 0 <= filePos && filePos <= audioFiles.size()-1){
             Phonon::MediaObject* metaInformationResolver = new Phonon::MediaObject(this);
-            Phonon::MediaSource source(audioFiles.at(filePos));
+            Phonon::MediaSource source(QUrl::fromLocalFile("file://"+audioFiles.at(filePos)));
             metaInformationResolver->setCurrentSource(source);
-
             connect(metaInformationResolver,SIGNAL(totalTimeChanged(qint64)),this,SLOT(editTime(qint64)));
+
+
+            Phonon::MediaObject* metaInformationResolver2 = new Phonon::MediaObject(this);
+            Phonon::MediaSource source2(QUrl::fromLocalFile(audioFiles.at(filePos)));
+            metaInformationResolver2->setCurrentSource(source2);
+            connect(metaInformationResolver2,SIGNAL(totalTimeChanged(qint64)),this,SLOT(editTime(qint64)));
+
         }
     }
 }
@@ -4052,24 +4066,26 @@ void MainWindow::updateMediaTime()
  */
 void MainWindow::editTime(qint64 newTime)
 {
-    QTime timeaux(0,0,0);
-    time = timeaux.addMSecs(newTime);
-    QTableWidgetItem *item = new QTableWidgetItem();
+    if(newTime != NULL){
+        QTime timeaux(0,0,0);
+        time = timeaux.addMSecs(newTime);
+        QTableWidgetItem *item = new QTableWidgetItem();
 
-    if(importMediasToolBox->currentIndex()==0){
-        item->setText(time.toString("hh:mm:ss:zzz"));
-        item->setFlags(Qt::ItemIsDragEnabled|Qt::ItemIsSelectable|Qt::ItemIsEnabled);
-        videoList->setItem(videoListPos,1,item);
-        videoListPos++;
-    }else if (importMediasToolBox->currentIndex()==1){
-        item->setText(time.toString("hh:mm:ss:zzz"));
-        item->setFlags(Qt::ItemIsDragEnabled|Qt::ItemIsSelectable|Qt::ItemIsEnabled);
-        audioList->setItem(audioListPos,1,item);
-        audioListPos++;
+        if(importMediasToolBox->currentIndex()==0){
+            item->setText(time.toString("hh:mm:ss:zzz"));
+            item->setFlags(Qt::ItemIsDragEnabled|Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+            videoList->setItem(videoListPos,1,item);
+            videoListPos++;
+        }else if (importMediasToolBox->currentIndex()==1){
+            item->setText(time.toString("hh:mm:ss:zzz"));
+            item->setFlags(Qt::ItemIsDragEnabled|Qt::ItemIsSelectable|Qt::ItemIsEnabled);
+            audioList->setItem(audioListPos,1,item);
+            audioListPos++;
+        }
+        filePos++;
+
+        emit updateMediaTime();
     }
-    filePos++;
-
-    emit updateMediaTime();
 }
 
 
@@ -4677,7 +4693,7 @@ void MainWindow::runNcl()
     if(!nclName.isEmpty() && !nclName.contains(".ncl")){
         nclName.append(".ncl");
     }
-    arguments << "--ncl"<< nclName;
+    arguments << "--ncl"<< nclName.toUtf8();
     connect(ginga,SIGNAL(error(QProcess::ProcessError)),this,SLOT(gingaError(QProcess::ProcessError)));
     if(nclName.isEmpty()){
         QMessageBox::StandardButton reply;
@@ -4880,7 +4896,7 @@ void MainWindow::loadImages()
         extension = videoList->item(i,0)->toolTip();
         videoName = videoList->item(i,0)->toolTip().remove(0, videoList->item(i,0)->toolTip().lastIndexOf('/')+1);
         videoName.append(".jpg");
-        QString cmd = "ffmpeg -i "+extension+" -ss 3.001 -t 3.001 -y images/"+videoName;
+        QString cmd = "ffmpeg -i "+extension.toUtf8()+" -ss 3.001 -t 3.001 -y images/"+videoName;
 
         int numError = system(cmd.toAscii());
 

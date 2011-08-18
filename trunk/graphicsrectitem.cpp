@@ -757,3 +757,14 @@ void GraphicsRectItem::setFlaseOkItemDrop()
 {
     okItem = false;
 }
+
+void GraphicsRectItem::setX(qreal x)
+{
+    setPos(x,y());
+}
+
+void GraphicsRectItem::setY(qreal y)
+{
+    setPos(x(),y);
+}
+

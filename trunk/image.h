@@ -118,6 +118,8 @@ public:
     QList<DescriptorParam*> getDescriptorParamList();
     /// clears the list \a desccriptorParamList
     void clearDescriptorParamList();
+    void setX(qreal x);
+    void setY(qreal y);
 
 private:
     TypeImage myType;
