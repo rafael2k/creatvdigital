@@ -1473,7 +1473,7 @@ void MainWindow::createNCL()
         }
 
         addPropertyToDescriptor();
-        NclDocument *nclDocument = new NclDocument();
+        NclGenerator *nclDocument = new NclGenerator();
         nclDocument->createNCL(graphicsScene,graphicsSceneHead,graphicsSceneTemporal,path,mediaVideoList,mediaAudioList,mediaImageList,mediaTextList,mediaLuaList,mediaUriList,descriptorList);
     }
 }
