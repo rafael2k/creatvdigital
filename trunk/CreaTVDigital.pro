@@ -62,7 +62,6 @@ SOURCES += main.cpp \
     diagramscenehead.cpp \
     image.cpp \
     arrow.cpp \
-    ncldocument.cpp \
     GUI/selectrole.cpp \
     GUI/imagedescriptorattr.cpp \
     GUI/audiodescriptoratrr.cpp \
@@ -76,7 +75,8 @@ SOURCES += main.cpp \
     GUI/modifysize.cpp \
     saveproject.cpp \
     GUI/editprojectdescription.cpp \
-    GUI/about.cpp
+    GUI/about.cpp \
+    nclgenerator.cpp
 HEADERS += mainwindow.h \
     graphicsrectitem.h \
     graphicsscene.h \
@@ -132,7 +132,6 @@ HEADERS += mainwindow.h \
     diagramscenehead.h \
     image.h \
     arrow.h \
-    ncldocument.h \
     GUI/selectrole.h \
     GUI/imagedescriptorattr.h \
     GUI/audiodescriptoratrr.h \
@@ -146,7 +145,8 @@ HEADERS += mainwindow.h \
     GUI/modifysize.h \
     saveproject.h \
     GUI/editprojectdescription.h \
-    GUI/about.h
+    GUI/about.h \
+    nclgenerator.h
 FORMS += mainwindow.ui \
     GUI/newproject.ui \
     GUI/selectrole.ui \

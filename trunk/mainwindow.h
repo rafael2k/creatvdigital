@@ -42,7 +42,7 @@
 #include <QTreeWidgetItem>
 #include "graphicsscene.h"
 #include "graphicsrectitem.h"
-#include "ncldocument.h"
+#include "nclgenerator.h"
 #include <Phonon/MediaObject>
 #include <QTime>
 
