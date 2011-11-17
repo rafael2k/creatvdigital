@@ -168,34 +168,29 @@ void NclGenerator::createNCL(GraphicsScene *graphicsScene, DiagramSceneHead *gra
  *\param GraphicsRectItem *rect
  *\return QList<Regionn*>
  */
-QList<Regionn*> NclGenerator::getRegiones(GraphicsRectItem *rect)
+Regionn* NclGenerator::getRegiones(GraphicsRectItem *rect)
 {
-    QList<Regionn*> regiones ;
-    QList<QGraphicsItem *> lista = rect->childItems();
-    GraphicsRectItem *rectItem;
     Regionn *region;
+    QList<QGraphicsItem *> listaHijos;
 
-    for(int i =0 ; i < lista.size();i++){
-        if(lista.at(i)->type() == 5){ // item is rectangulo
-            rectItem =  qgraphicsitem_cast<GraphicsRectItem *>(lista.at(i));
-            region = new Regionn(rectItem->getName());
-            region->setWidth(rectItem->getWidthRecNCL());
-            region->setHeight(rectItem->getHeighRecNCL());
-            region->setLeft(rectItem->getXRecNCL());
-            region->setTop(rectItem->getYRecNCL());
-            region->setZIndex(QString::number(rectItem->zValue()));
 
-            if (rectItem->childItems().size() == 0){
-                regiones.append(region);
-            }else{
-                for(int j = 0 ; j < getRegiones(rectItem).size() ; j++){
-                    region->addRegion(getRegiones(rectItem).at(j));
-                    regiones.append(region);
-                }
-            }
-        }
+    region = new Regionn(rect->getName());
+    region->setWidth(rect->getWidthRecNCL());
+    region->setHeight(rect->getHeighRecNCL());
+    region->setLeft(rect->getXRecNCL());
+    region->setTop(rect->getYRecNCL());
+    region->setZIndex(QString::number(rect->zValue()));
+
+
+    if (rect->childItems().size() == 0){
+        return region;
+    }else{
+        listaHijos = rect->childItems();
+        for(int j = 0 ; j < rect->childItems().size() ; j++)
+            region->addRegion(getRegiones(qgraphicsitem_cast<GraphicsRectItem *>(listaHijos.at(j))));
+
     }
-    return regiones;
+    return region;
 }
 
 
@@ -211,12 +206,14 @@ void NclGenerator::MakeRegionBase(GraphicsScene *graphicsScene)
     int regionNumber = 0;
     GraphicsRectItem *rectItem;
     Regionn *region;
+    QList<QGraphicsItem *> listaHijos;
 
     if (lista.count()!=0){
         for(int i = 0; i < lista.count();i++){
             if(lista.at(i)->type() == 5){ //item is rectangulo
                 rectItem =  qgraphicsitem_cast<GraphicsRectItem *>(lista.at(i));
                 if(rectItem->parentItem() == 0){
+
                     region = new Regionn(rectItem->getName());
                     region->setWidth(rectItem->getWidthRecNCL());
                     region->setHeight(rectItem->getHeighRecNCL());
@@ -224,14 +221,17 @@ void NclGenerator::MakeRegionBase(GraphicsScene *graphicsScene)
                     region->setTop(rectItem->getYRecNCL());
                     region->setZIndex(QString::number(rectItem->zValue()));
 
+
                     regionNumber++;
 
                     if(rectItem->childItems().size() > 0 ){
-                        for(int j = 0 ; j < getRegiones(rectItem).size() ; j++)
-                            region->addRegion(getRegiones(rectItem).at(j));
+                        listaHijos = rectItem->childItems();
+                        for(int j = 0 ; j < rectItem->childItems().size() ; j++){
+                            region->addRegion(getRegiones(qgraphicsitem_cast<GraphicsRectItem *>(listaHijos.at(j))));
+                        }
                     }
                     if (regionNumber == 1){
-                        regionBase = new RegionBase(*region);                       
+                        regionBase = new RegionBase(*region);
                     }else{
                         regionBase->addRegion(*region);
                     }
