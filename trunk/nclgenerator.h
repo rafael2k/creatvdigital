@@ -71,8 +71,8 @@ public:
 private:
     Head *head ;
     Body *body ;
-    /// returns the list of all regions childrens of \a rect
-    QList<Regionn*> getRegiones(GraphicsRectItem *rect);
+    /// returns a region with all your regions childrens of \a rect
+    Regionn* getRegiones(GraphicsRectItem *rect);
     /// returns the Media with name \a nameTempLine
     Media * getMedia(QString nameTempLine,QList<Media*> mediaAudioList,QList<Media*> mediaImageList,QList<Media*> mediaTextList,QList<Media*> mediaVideoList);
     /// builds the \b regionbase sector
